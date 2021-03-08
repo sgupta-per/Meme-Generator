@@ -36,7 +36,7 @@ class PDFIngestor(IngestorInterface):
         reading data from file.
         """
         if not cls.can_ingest(path):
-            raise("Input file can not be ingested")
+            raise Exception("Input file can not be ingested")
         tmp = f'./tmp/{random.randint(0,100000000)}.txt'
         try:
             call = subprocess.call(['pdftotext', path, tmp])

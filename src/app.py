@@ -17,7 +17,7 @@ from MemeGen import MemeEngine
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 300
-meme = MemeEngine.MemeEngine('./static')
+meme = MemeEngine('./static')
 
 
 def setup():
@@ -94,6 +94,18 @@ def meme_post():
     path = meme.make_meme(tmp_image, quote_body, quote_author)
     os.remove(tmp_image)
     return render_template('meme.html', path=path)
+
+
+@app.errorhandler(404)
+def not_found_error(error):
+    """Handle 404 errors."""
+    return render_template('404.html', path='./static/opps.png'), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    """Handle 500 errors."""
+    return render_template('500.html'), 500
 
 
 @app.after_request

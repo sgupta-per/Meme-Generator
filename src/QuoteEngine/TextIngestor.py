@@ -30,7 +30,7 @@ class TextIngestor(IngestorInterface):
         or reading data from file.
         """
         if not cls.can_ingest(path):
-            raise("Input file can not be ingested")
+            raise Exception("Input file can not be ingested")
         try:
             quotes = []
             with open(path, 'r') as infile:

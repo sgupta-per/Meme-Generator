@@ -33,7 +33,7 @@ class CSVIngestor(IngestorInterface):
         opening or reading data from file.
         """
         if not cls.can_ingest(path):
-            raise("Input file can not be ingested")
+            raise Exception("Input file can not be ingested")
         try:
             quotes = []
             df = pandas.read_csv(path, header=0)

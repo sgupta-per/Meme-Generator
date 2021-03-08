@@ -13,8 +13,8 @@ If any argument is not defined, a random selection is used.
 
     -- python3 meme.py
 
-    -- python3 meme.py --path './_data/photos/Image10.jpg' --body 'Test quote'
-       --author 'Shivani'
+    -- python3 meme.py --path './_data/photos/dog/xander_1.jpg'
+       --body 'Test quote' --author 'Shivani'
 """
 import os
 import random
@@ -66,7 +66,7 @@ def generate_meme(path=None, body=None, author=None):
             raise Exception('Author Required if Body is Used')
         quote = QuoteModel.QuoteModel(body, author)
 
-    meme = MemeEngine.MemeEngine('./tmp')
+    meme = MemeEngine('./tmp')
     path = meme.make_meme(img, quote.body, quote.author)
     return path
 
